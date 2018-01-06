@@ -8,25 +8,25 @@
 //  - [Chinese] http://www.cocos.com/docs/creator/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/editors_and_tools/creator-chapters/scripting/life-cycle-callbacks/index.html
 
+let pause = false;
+
 cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
+        pause: cc.Button,
+        scoreNum: cc.Label,
+        bombNum: cc.Label,
+        bomb: cc.Node,
+        back_1: cc.Node,
+        back_2: cc.Node,
+
+        pauseSprite: {
+            default: [],
+            type: cc.SpriteFrame,
+            tooltip: '暂停按钮图片组',
+        },
+
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -36,6 +36,20 @@ cc.Class({
     start () {
 
     },
+
+    handlePause:function () {
+        if (pause) {
+            this.pause.normalSprite = this.pauseSprite[0];
+            this.pause.pressedSprite = this.pauseSprite[1];
+            this.pause.hoverSprite = this.pauseSprite[1];
+            return pause = !pause
+        }
+
+        this.pause.normalSprite = this.pauseSprite[2];
+        this.pause.pressedSprite = this.pauseSprite[3];
+        this.pause.hoverSprite = this.pauseSprite[3];
+        return pause = !pause;
+    }
 
     // update (dt) {},
 });
