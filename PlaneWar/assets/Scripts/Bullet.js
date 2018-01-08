@@ -23,10 +23,15 @@ cc.Class({
 
     },
 
+    //碰撞检测
+    onCollisionEnter: function (other, self) {
+        this.bulletGroup.destroyBullet(self.node);  
+    },
+
     update (dt) {
         this.node.y += dt * this.speed;
         if (this.node.y > this.node.parent.height) {
-            this.bulletGroup.bulletPool.put(this.node);
+            this.bulletGroup.destroyBullet(this.node);
         }
     },
 });
