@@ -857,7 +857,7 @@
     "node": {
       "__id__": 23
     },
-    "_enabled": false,
+    "_enabled": true,
     "enemyGroup": [
       {
         "__id__": 25
@@ -1497,7 +1497,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 45
