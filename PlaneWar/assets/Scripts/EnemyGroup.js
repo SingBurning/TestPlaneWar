@@ -1,12 +1,4 @@
-// Learn cc.Class:
-//  - [Chinese] http://www.cocos.com/docs/creator/scripting/class.html
-//  - [English] http://www.cocos2d-x.org/docs/editors_and_tools/creator-chapters/scripting/class/index.html
-// Learn Attribute:
-//  - [Chinese] http://www.cocos.com/docs/creator/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/editors_and_tools/creator-chapters/scripting/reference/attributes/index.html
-// Learn life-cycle callbacks:
-//  - [Chinese] http://www.cocos.com/docs/creator/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/editors_and_tools/creator-chapters/scripting/life-cycle-callbacks/index.html
+
 
 const enemyG = cc.Class({
     name: 'enemyG',
@@ -62,13 +54,13 @@ cc.Class({
         newNode.getComponent('Enemy').enemyGroup = this;
 
         //初始化敌机状态
-        newNode.getComponent('Enemy').enemyInfo();
+        newNode.getComponent('Enemy').enemyInit();
     },
 
     //随机生成位置
     getNewEnemyPosition: function(newEnemy){
         //位于上方，先不可见
-        var randx = cc.randomMinus1To1 * (this.node.parent.width / 2 - newEnemy.width / 2);
+        var randx = cc.randomMinus1To1() * (this.node.parent.width / 2 - newEnemy.width / 2);
         var randy = this.node.parent.height / 2 + newEnemy.height / 2;
         return cc.v2(randx, randy);
     },
