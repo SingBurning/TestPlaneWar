@@ -84,7 +84,7 @@ cc.Class({
         //初始化对象池
         D.common.initNodePool(this, this.infiniteBullet);
         D.common.batchInitNodePool(this, this.finiteBullet);
-        this.startAction();
+        // this.startAction();
     },
 
     //发射子弹，定时器

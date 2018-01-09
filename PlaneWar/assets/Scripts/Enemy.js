@@ -24,6 +24,12 @@ cc.Class({
             type: cc.SpriteFrame,
             tooltip: '初始化图像'
         },
+
+        score: {
+            default: 0,
+            type: cc.Integer,
+            tooltip: '敌机分值',
+        }
     },
 
     
@@ -62,16 +68,20 @@ cc.Class({
         if (this.HP == 0) {
             // this.HP--;
             this.node.group = 'default';
-            let anim = this.getComponent(cc.Animation);
-            let animName = this.node.name + '_exploding';
-            anim.play(animName);
-            anim.on('finished', this.onHandleDestroy, this);
+            this.explodingAnim();
             return;
         }
 
         if (this.HP > 0) {
             this.HP--;
         }
+    },
+
+    explodingAnim: function () {
+        let anim = this.getComponent(cc.Animation);
+        let animName = this.node.name + '_exploding';
+        anim.play(animName);
+        anim.on('finished', this.onHandleDestroy, this);
     },
 
     start () {
@@ -88,6 +98,6 @@ cc.Class({
     },
 
     onHandleDestroy: function () {
-        this.enemyGroup.destroyEnemy(this.node);
+        this.enemyGroup.destroyEnemy(this.node, this.score);
     }
 });

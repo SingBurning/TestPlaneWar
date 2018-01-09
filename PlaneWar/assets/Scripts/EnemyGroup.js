@@ -14,18 +14,20 @@ const enemyG = cc.Class({
 cc.Class({
     extends: cc.Component,
 
-    properties:{
+    properties:()=>({
         enemyGroup: {
             default: [],
             type: enemyG,
+        },
+        gamemain: {
+            default: null,
+            type: require('GameMain')
         }
-    },
-
-    // LIFE-CYCLE CALLBACKS:
+    }),
 
     onLoad () {
         D.common.batchInitNodePool(this, this.enemyGroup);
-        this.startAction();
+        // this.startAction();
     },
 
     start () {
@@ -66,8 +68,9 @@ cc.Class({
     },
 
     //销毁
-    destroyEnemy: function (node) {
+    destroyEnemy: function (node, score = 0) {
         D.common.putBackPool(this, node);
+        score && this.gamemain.changeScore(score);
     }
 
     // update (dt) {},

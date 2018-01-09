@@ -37,6 +37,8 @@ cc.Class({
     initNodePool: function (that, objInfo) {
         let name = objInfo.name;
         let poolName = name + 'Pool';
+        console.log(poolName);
+        
         that[poolName] = new cc.NodePool();
         //创建对象，放入池中
         for (let i = 0; i < objInfo.poolAmount; i++) {
@@ -59,6 +61,8 @@ cc.Class({
 
     //销毁节点
     putBackPool: function (that, node) {
+        console.log(node);
+        
         let poolName = node.name + 'Pool';
         that[poolName].put(node);
     }
