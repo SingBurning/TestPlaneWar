@@ -94,10 +94,10 @@ cc.Class({
     },
 
     getUfoBomb: function () {
-        D.commonConstant.bombAmount++;
-
+        
         if (D.commonConstant.bombAmount < 3) {
-            D.commonConstant.bombAmount = 3
+            D.commonConstant.bombAmount++;
+
             this.bombNum.string = String(D.commonConstant.bombAmount);
         }
     },
