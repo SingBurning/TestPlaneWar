@@ -169,7 +169,7 @@
     },
     "_enabled": true,
     "HP": 3,
-    "speedMax": 10,
+    "speedMax": 50,
     "initSpriteFrame": {
       "__uuid__": "346dfe53-48be-469e-aa4e-3ae998d23713"
     }

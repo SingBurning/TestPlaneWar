@@ -38,6 +38,9 @@ cc.Class({
 
     //初始化
     enemyInit: function () {
+        if (this.node.group != 'enemy') {
+            this.node.group = 'enemy';
+        }
         //血量
         this.enemyHP = this.HP;
         //找到node的sprite组件
@@ -56,7 +59,8 @@ cc.Class({
         console.log("打中了 "+this.HP + other.node.group);
         
         if (this.HP == 0) {
-            this.HP--;
+            // this.HP--;
+            this.node.group = 'default';
             let anim = this.getComponent(cc.Animation);
             let animName = this.node.name + '_exploding';
             anim.play(animName);
