@@ -59,7 +59,7 @@ cc.Class({
         console.log("打中了 "+this.HP + other.node.group);
 
         
-        if (this.HP <= 0) {
+        if (this.HP == 0) {
             // this.HP--;
             this.node.group = 'default';
             let anim = this.getComponent(cc.Animation);
