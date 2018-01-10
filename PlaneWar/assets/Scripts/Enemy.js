@@ -62,7 +62,7 @@ cc.Class({
         if (other.node.group !== 'bullet') {
             return;
         }
-        console.log("打中了 "+this.HP + other.node.group);
+        // console.log("打中了 "+this.HP + other.node.group);
 
         
         if (this.HP == 0) {

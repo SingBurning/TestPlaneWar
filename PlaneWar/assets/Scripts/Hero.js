@@ -1,5 +1,4 @@
 
-
 cc.Class({
     extends: cc.Component,
 
@@ -14,13 +13,19 @@ cc.Class({
             type: require('BulletGroup'),
         },
 
+        touchLayer: {
+            default: null,
+            type: require('GameTouchLayer')
+        },
+
+        gameoverSound: cc.AudioClip,
     }),
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
         //监听拖动事件
-        this.onDrag();
+        // this.onDrag();
         //获取碰撞检测系统
         let manager = cc.director.getCollisionManager();
         //开启碰撞检测系统
@@ -45,6 +50,22 @@ cc.Class({
         let position = event.getLocation();
         //转换本地坐标
         let location = this.node.parent.convertToNodeSpaceAR(position);
+
+        let minX = -this.node.parent.width / 2 + this.node.width / 2;
+        let maxX = -minx;
+        let minY = -this.node.parent.height / 2 + this.node.height / 2;
+        let maxY = -minY;
+        if (location.x < minX) {
+            location.x = minX;
+        }else if(location.x > maxX){
+            location.x = maxX;
+        }
+        else if(location.y > maxY){
+            location.y = maxY;
+        }
+        else if(location.Y < maxY){
+            location.y = maxY;
+        }
         this.node.setPosition(location);
     },
 
@@ -60,10 +81,11 @@ cc.Class({
         }
 
         if (other.node.group == 'enemy') {
-            console.log(other.node);
+            // console.log(other.node);
             let anim = this.getComponent(cc.Animation);
             let animName = this.node.group + '_exploding';
             anim.play(animName);
+            cc.audioEngine.play(this.gameoverSound);
             anim.on('finished', this.onHandleDestroy, this);
             // this.node.destroy();
         }
@@ -71,6 +93,7 @@ cc.Class({
 
     onHandleDestroy: function () {
         // this.node.destroy();
+        this.touchLayer.offDrag();
         this.offDrag();
         cc.director.pause();
         this.node.destroy();

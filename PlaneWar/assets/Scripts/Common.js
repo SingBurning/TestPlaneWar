@@ -61,8 +61,6 @@ cc.Class({
 
     //销毁节点
     putBackPool: function (that, node) {
-        console.log(node);
-        
         let poolName = node.name + 'Pool';
         that[poolName].put(node);
     }

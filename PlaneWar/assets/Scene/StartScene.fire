@@ -59,20 +59,20 @@
         "__id__": 3
       },
       {
-        "__id__": 5
+        "__id__": 6
       },
       {
-        "__id__": 11
+        "__id__": 12
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 13
+        "__id__": 14
       },
       {
-        "__id__": 14
+        "__id__": 15
       }
     ],
     "_prefab": null,
@@ -125,6 +125,9 @@
     "_components": [
       {
         "__id__": 4
+      },
+      {
+        "__id__": 5
       }
     ],
     "_prefab": null,
@@ -193,6 +196,32 @@
     }
   },
   {
+    "__type__": "cc.Widget",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 3
+    },
+    "_enabled": true,
+    "isAlignOnce": true,
+    "_target": null,
+    "_alignFlags": 45,
+    "_left": 0,
+    "_right": 0,
+    "_top": 0,
+    "_bottom": 0,
+    "_verticalCenter": 0,
+    "_horizontalCenter": 0,
+    "_isAbsLeft": true,
+    "_isAbsRight": true,
+    "_isAbsTop": true,
+    "_isAbsBottom": true,
+    "_isAbsHorizontalCenter": true,
+    "_isAbsVerticalCenter": true,
+    "_originalWidth": 480,
+    "_originalHeight": 800
+  },
+  {
     "__type__": "cc.Node",
     "_name": "btnbg",
     "_objFlags": 0,
@@ -201,17 +230,17 @@
     },
     "_children": [
       {
-        "__id__": 6
+        "__id__": 7
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 8
+        "__id__": 9
       },
       {
-        "__id__": 9
+        "__id__": 10
       }
     ],
     "_prefab": null,
@@ -256,14 +285,14 @@
     "_name": "label",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 5
+      "__id__": 6
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 7
+        "__id__": 8
       }
     ],
     "_prefab": null,
@@ -308,7 +337,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 6
+      "__id__": 7
     },
     "_enabled": true,
     "_useOriginalSize": false,
@@ -330,13 +359,13 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 5
+      "__id__": 6
     },
     "_enabled": true,
     "_spriteFrame": {
       "__uuid__": "73e67ee0-9d86-402e-a776-41136b215e5c"
     },
-    "_type": 0,
+    "_type": 1,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -356,7 +385,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 5
+      "__id__": 6
     },
     "_enabled": true,
     "transition": 2,
@@ -384,7 +413,7 @@
     },
     "clickEvents": [
       {
-        "__id__": 10
+        "__id__": 11
       }
     ],
     "_N$interactable": true,
@@ -410,7 +439,7 @@
       "__uuid__": "73e67ee0-9d86-402e-a776-41136b215e5c"
     },
     "_N$target": {
-      "__id__": 5
+      "__id__": 6
     }
   },
   {
@@ -434,7 +463,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 12
+        "__id__": 13
       }
     ],
     "_prefab": null,
@@ -479,7 +508,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 11
+      "__id__": 12
     },
     "_enabled": true,
     "_useOriginalSize": false,
@@ -521,7 +550,7 @@
     },
     "_enabled": true,
     "startButton": {
-      "__id__": 9
+      "__id__": 10
     },
     "buttonSound": {
       "__uuid__": "0fd6cf77-a919-4a56-8c44-2ed0d0d60a49"

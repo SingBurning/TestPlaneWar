@@ -32,6 +32,23 @@ cc.Class({
             type: require('Hero'),
         },
 
+        gameMusic:{
+            default: null,
+            type: cc.AudioSource
+        },
+
+        useBombClip: cc.AudioClip,
+
+        gamebg:{
+            default: [],
+            type: cc.Node
+        },
+
+        gamebgSpeed: {
+            default: 5,
+            type: cc.Integer
+        },
+
         bulletGroup: require('./BulletGroup'),
         enemyGroup: require('./EnemyGroup'),
         ufoGroup: require('./UFOGroup'),
@@ -44,6 +61,7 @@ cc.Class({
         this.enemyGroup.startAction();
         this.bulletGroup.startAction();
         this.ufoGroup.startAction();
+        this.gameMusic.play();
     },
 
     start () {
@@ -54,6 +72,9 @@ cc.Class({
         D.commonConstant.pauseState = false;
         D.commonConstant.bombAmount = 0;
         D.commonConstant.gameScore = 0;
+         if (cc.director.isPaused()){
+             cc.director.resume();
+         }
     },
 
     handlePause:function () {
@@ -64,7 +85,8 @@ cc.Class({
             //恢复暂停
             cc.director.resume();
             this.hero.onDrag();
-            return D.commonConstant.pauseState = !D.commonConstant.pauseState
+            this.gameMusic.resume();
+            return D.commonConstant.pauseState = !D.commonConstant.pauseState;
         }
 
         this.pause.normalSprite = this.pauseSprite[2];
@@ -72,6 +94,7 @@ cc.Class({
         this.pause.hoverSprite = this.pauseSprite[3];
         //暂停
         cc.director.pause();
+        this.gameMusic.pause();
         this.hero.offDrag();
         return D.commonConstant.pauseState = !D.commonConstant.pauseState;
     },
@@ -81,6 +104,7 @@ cc.Class({
             D.commonConstant.bombAmount--;
             this.bombNum.string = String(D.commonConstant.bombAmount);
             this.romoveEnemy();
+            cc.audioEngine.play(this.useBombClip);
         }else{
             console.log("没有炸弹...");
         }
@@ -106,7 +130,14 @@ cc.Class({
     changeScore: function (score) {
         D.commonConstant.gameScore += score;
         this.scoreNum.string = D.commonConstant.gameScore.toString();
-    }
+    },
 
-    // update (dt) {},
+    update (dt) {
+        for (let i = 0; i < this.gamebg.length; i++) {
+            this.gamebg[i].y -= this.gamebgSpeed
+            if (this.gamebg[i].y < -this.gamebg[i].height) {
+                this.gamebg[i].y = this.gamebg[i].height - 10
+            }
+        }
+    },
 });

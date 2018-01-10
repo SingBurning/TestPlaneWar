@@ -42,16 +42,6 @@ const finiteBullet = cc.Class({
 cc.Class({
     extends: cc.Component,
 
-    // properties: {
-    //     bullet: cc.Prefab,
-    //     hero: cc.Node,
-    //     rate: cc.Integer,
-    //     bulletCount: {
-    //         default: 10,
-    //         type: cc.Integer
-    //     }
-    // },
-
     properties:() => ({
         infiniteBullet: {
             default: null,
@@ -65,6 +55,11 @@ cc.Class({
             tooltip: '有限子弹',
         },
         hero: cc.Node,
+
+        // bulletSound: {
+        //     default: null,
+        //     url: cc.AudioClip
+        // }
     }),
 
 
@@ -73,14 +68,6 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        // //创建子弹对象池
-        // this.getBulletPool();
-        // //设置定时器，每隔0.2s创建一个新的子弹
-        // this.schedule(function () {
-        //     this.startShoot(this.bulletPool)
-        // }.bind(this),this.rate);
-        // window.pool = this.bulletPool;
-
         //初始化对象池
         D.common.initNodePool(this, this.infiniteBullet);
         D.common.batchInitNodePool(this, this.finiteBullet);
@@ -90,6 +77,7 @@ cc.Class({
     //发射子弹，定时器
     startAction: function(){
         this.startShoot = function () {
+            // cc.audioEngine.play(this.bulletSound);
             this.genNewBullet(this.infiniteBullet);
         }.bind(this);
         //定时器 创建发射子弹的对象
