@@ -74,6 +74,7 @@ cc.Class({
         this.offDrag();
         cc.director.pause();
         this.node.destroy();
+        cc.director.loadScene('EndScene');
     }
 
     // update (dt) {},
